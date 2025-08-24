@@ -1,0 +1,220 @@
+
+@import url('https://unpkg.com/leaflet@1.9.5/dist/leaflet.css');
+
+.booking {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  padding: 110px 20px 20px 20px; /* 80px top padding for header */
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.booking h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.selected-service {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #cccccc;
+}
+
+.booking-form input,
+.booking-form textarea,
+.booking-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+  font-size: 14px;
+}
+
+.booking-form textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.booking-form .btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #ff5722;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.booking-form .btn:hover {
+  background-color: #e64a19;
+}
+
+.note {
+  font-size: 13px;
+  color: #aaaaaa;
+  margin-bottom: 10px;
+}
+
+.confirmation {
+  text-align: center;
+  padding: 20px;
+  color: #f0f0f0;
+}
+
+.redirect-msg {
+  color: #888888;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+/* Location picker */
+.location-picker {
+  margin-bottom: 15px;
+  font-family: Arial, sans-serif;
+}
+
+.search-container {
+  display: flex;
+  gap: 5px;
+}
+
+.search-container input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+  font-size: 14px;
+}
+
+.btn-search {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #ff5722;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-search:hover {
+  background-color: #e64a19;
+}
+
+.search-results {
+  max-height: 150px;
+  overflow-y: auto;
+  background: #2c2c2c;
+  border: 1px solid #444;
+  border-radius: 6px;
+  margin-top: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.search-results li {
+  padding: 8px;
+  cursor: pointer;
+  color: #f0f0f0;
+}
+
+.search-results li:hover {
+  background-color: #444;
+}
+
+.btn-location {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  background-color: #ff5722;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-location:hover {
+  background-color: #e64a19;
+}
+
+.location-preview {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #cccccc;
+}
+
+.leaflet-container {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+
+.map-container-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.map-search-overlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+.map-search-overlay input {
+  flex: 1;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: transparent;
+}
+
+.map-search-overlay .btn-search-map {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.map-search-bar {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.map-search-bar input {
+  flex: 1;
+  padding: 7px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.map-search-bar .btn-search-map {
+  padding: 7px 12px;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
