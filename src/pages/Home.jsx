@@ -1,6 +1,7 @@
 import "./Home.css";
 import React from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 function Home() {
   // ---- replace these with your real details ----
@@ -11,6 +12,72 @@ function Home() {
 
   return (
     <div className="home">
+
+    {/* ✅ SEO Meta Tags */}
+      <Helmet>
+        <title>Kalki Motors | Multi-Branded Two Wheeler Sales & Services</title>
+        <meta
+          name="description"
+          content="Kalki Motors offers two-wheeler sales, servicing, and doorstep bike maintenance. Trusted by riders for affordable deals, genuine parts, and expert technicians."
+        />
+        <meta
+          name="keywords"
+          content="Kalki Motors, bike sales, scooter service, motorcycle maintenance, doorstep bike service, two wheeler showroom"
+        />
+        <meta name="author" content="Kalki Motors" />
+        <meta property="og:title" content="Kalki Motors | Bike Sales & Service" />
+        <meta
+          property="og:description"
+          content="Explore offers on new bikes, doorstep servicing, and genuine parts at Kalki Motors."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://kalki-motors.vercel.app/" />
+        <meta property="og:image" content="%PUBLIC_URL%/logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        {/* ✅ JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "Kalki Motors",
+            image: "https://kalki-motors.vercel.app/logo.png",
+            "@id": "",
+            url: "https://kalki-motors.vercel.app",
+            telephone: "+91" + PHONE_NUMBER,
+            address: {
+              "@type": "560091",
+              streetAddress: "ullal,",
+              addressLocality: "Bangalore",
+              addressRegion: "KA",
+              postalCode: "560091",
+              addressCountry: "IN",
+            },
+            openingHoursSpecification: [
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                ],
+                opens: "09:00",
+                closes: "20:00",
+              },
+            ],
+            sameAs: [
+              "https://www.facebook.com/yourpage",
+              "https://www.instagram.com/yourpage",
+              "https://wa.me/" + WHATSAPP_NUMBER,
+            ],
+          })}
+        </script>
+      </Helmet>
+    
+
       {/* Welcome Bar */}
       <div className="welcome-bar">
         Welcome to Two Wheeler Sales and Services
@@ -19,7 +86,7 @@ function Home() {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-text">
-          <h1>Your Ride, Our Pride</h1>
+          <h1>Kaliki motors - Your Ride, Our Pride</h1>
           <p>
             Explore the best deals on two-wheelers, services, and maintenance —
             all in one place.

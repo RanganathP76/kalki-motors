@@ -51,8 +51,9 @@ function Header() {
       <nav ref={navRef} className={`nav ${isOpen ? "active" : ""}`}>
         <ul>
           <li><NavLink to="/" className="link" onClick={() => setIsOpen(false)}>Home</NavLink></li>
-          <li><NavLink to="/offers" className="link" onClick={() => setIsOpen(false)}>Offers</NavLink></li>
+          
           <li><NavLink to="/services" className="link" onClick={() => setIsOpen(false)}>Services</NavLink></li>
+          <li><NavLink to="/offers" className="link" onClick={() => setIsOpen(false)}>Offers</NavLink></li>
           <li><NavLink to="/contact" className="link" onClick={() => setIsOpen(false)}>Contact</NavLink></li>
         </ul>
       </nav>
