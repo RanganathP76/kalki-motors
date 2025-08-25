@@ -21,8 +21,8 @@ const customMarker = new L.Icon({
 
 // Your business coordinates
 const businessLocation = { lat: 12.9561620, lng: 77.4786450 };
-const whatsappNumber = "918050084991";
-const phoneNumber = "8050084991";
+const whatsappNumber = "919606188193";
+const phoneNumber = "9606188193";
 
 function ContactPage() {
   return (
