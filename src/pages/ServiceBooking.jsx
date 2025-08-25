@@ -70,6 +70,7 @@ function ServiceBooking() {
   const [results, setResults] = useState([]);
   const [typing, setTyping] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [locating, setLocating] = useState(false);
 
   // Fetch search suggestions
   useEffect(() => {
@@ -94,8 +95,8 @@ function ServiceBooking() {
     return () => clearTimeout(timer);
   }, [query]);
 
-  const selectLocation = async (coords) => {
-    setFormData((prev) => ({ ...prev, location: coords }));
+  // Reverse geocode and update address
+  const updateAddressFromCoords = async (coords) => {
     try {
       const res = await fetch(
         `https://nominatim.openstreetmap.org/reverse?format=json&lat=${coords.lat}&lon=${coords.lng}`
@@ -104,26 +105,42 @@ function ServiceBooking() {
       setFormData((prev) => ({
         ...prev,
         address: data.display_name || "",
+        location: coords,
       }));
     } catch (err) {
       console.error(err);
     }
+  };
+
+  const selectLocation = (coords) => {
+    setFormData((prev) => ({ ...prev, location: coords }));
+    updateAddressFromCoords(coords);
     setQuery("");
     setResults([]);
   };
 
   const handleLiveLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          selectLocation({
-            lat: pos.coords.latitude,
-            lng: pos.coords.longitude,
-          });
-        },
-        (err) => alert("Unable to fetch location: " + err.message)
-      );
-    } else alert("Geolocation not supported.");
+    if (!navigator.geolocation) {
+      alert("Geolocation not supported.");
+      return;
+    }
+
+    setLocating(true);
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const coords = {
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude,
+        };
+        selectLocation(coords);
+        setLocating(false);
+      },
+      (err) => {
+        alert("Unable to fetch location: " + err.message);
+        setLocating(false);
+      },
+      { enableHighAccuracy: true, timeout: 10000 } // faster timeout
+    );
   };
 
   const handleChange = (e) => {
@@ -255,8 +272,9 @@ function ServiceBooking() {
                 type="button"
                 className="btn-location"
                 onClick={handleLiveLocation}
+                disabled={locating}
               >
-                📍 Use My Location
+                {locating ? "📍 Locating..." : "📍 Use My Location"}
               </button>
 
               {formData.location && (
